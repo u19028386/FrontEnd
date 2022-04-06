@@ -42,17 +42,9 @@ Contact Me
 
  Full name : Sinenhlanhla Dlamini
 
-A name is required.
-
  Email address : u19028386@tuks.co.za
 
-An email is required.
-
-Email is not valid.
-
  Phone number : 072 391 2049
-
-A phone number is required.
 
 Message
 
@@ -72,9 +64,6 @@ Send
 1126 Park Street
 Pretoria 0018
 
-#### Around the Web
-
-[](#!)[](#!)[](#!)[](#!)
 
 #### About Freelancer
 
