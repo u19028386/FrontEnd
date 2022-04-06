@@ -69,8 +69,8 @@ Send
 
 #### Location
 
-2215 John Daniel Drive  
-Clark, MO 65243
+1126 Park Street
+Pretoria 0018
 
 #### Around the Web
 
@@ -82,56 +82,5 @@ Freelance is a free to use, MIT licensed Bootstrap theme created by [Start Boots
 
 Copyright © Your Website 2022
 
-Log Cabin
----------
-
-![...](assets/img/portfolio/cabin.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
-
-Close Window
-
-Tasty Cake
-----------
-
-![...](assets/img/portfolio/cake.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
-
-Close Window
-
-Circus Tent
------------
-
-![...](assets/img/portfolio/circus.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
-
-Close Window
-
-Controller
-----------
-
-![...](assets/img/portfolio/game.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
-
-Close Window
-
-Locked Safe
------------
-
-![...](assets/img/portfolio/safe.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
-
-Close Window
-
-Submarine
----------
-
-![...](assets/img/portfolio/submarine.png) 
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
 
 Close Window
