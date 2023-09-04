@@ -1,0 +1,85 @@
+
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Allocate Employee To Project</h4>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form [formGroup]="projectAForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="form-group pt-3">
+                <label for="projectId">Project:</label>
+                <select id="projectId" formControlName="projectId" required>
+                  <option value="" disabled>Select Project</option>
+                  <option *ngFor="let project of projects" [value]="project.projectId">
+                    {{ project.projectName}}
+                  </option>
+                </select>
+                <div *ngIf="isSubmitted && projectAForm.get('projectId')?.errors?.['required']" class="text-danger">Project is required.</div>
+            </div>
+
+
+            <div class="form-group pt-3">
+              <label for="employeeId">Employee:</label>
+            <select id="employeeId" formControlName="employeeId" required>
+              <option value="" disabled>Select Employee</option>
+              <option *ngFor="let employee of employees" [value]="employee.employeeId">
+                {{ employee.pLastName }} {{ employee.pFirstName }}
+              </option>
+            </select>
+            <div *ngIf="isSubmitted && projectAForm.get('employeeId')?.errors?.['required']" class="text-danger">Employee is required.</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="isEligibleToClaim">Is Eligible to Claim:</label>
+              <input type="checkbox" formControlName="isEligibleToClaim" (change)="updateClaimableAmount()">
+            </div>
+        
+          <div class="form-group pt-3">
+            <label for="claimItemId">Claim Item:</label>
+            <select id="claimItemId" formControlName="claimItemId" required [disabled]="!projectAForm.get('isEligibleToClaim')?.value">
+                <option value="" disabled>Select Claim Item</option>
+                <option *ngFor="let item of claimitems" [value]="item.claimItemId">{{ item.claimItemName }}</option>
+            </select>
+        </div>
+        
+          <div class="form-group pt-3">
+              <label for="claimableAmount">Claimable Amount:</label>
+          <input type="number" formControlName="claimableAmount" required [disabled]="!projectAForm.get('isEligibleToClaim')?.value" min="0">
+          </div>
+
+
+          <div class="form-group pt-3">
+            <label for="totalNumHours">Total Number of Hours:</label>
+            <input type="number" formControlName="totalNumHours" min="0">
+            <div *ngIf="isSubmitted && projectAForm.get('totalNumHours')?.errors?.['required']" class="text-danger">Total hours is required.</div>
+          </div>
+        
+          <div class="form-group pt-3">
+            <label for="billableOverTime">Billable Overtime:</label>
+            <input type="number" formControlName="billableOverTime" min="0">
+          </div>
+
+
+          <div class="form-group pt-3">
+            <label for="isOperationalManager">Is Operational Manager:</label>
+            <input type="checkbox" formControlName="isOperationalManager" (change)="updateOperationalManager()" >
+          </div>
+        
+          <div class="form-group pt-3">
+            <label for="isProjectManager">Is Project Manager:</label>
+            <input type="checkbox" formControlName="isProjectManager" (change)="updateProjectManager()">
+          
+          </div>
+        
+          <div class="form-group pt-3">
+            <button type="submit" class="btn btn-lg btn-primary">Allocate</button>
+            <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

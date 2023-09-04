@@ -1,0 +1,33 @@
+<div class="email-container">
+  <h1 class="email-heading">Email Employee</h1>
+  <p>Get ready to dive into the world of interaction! Connect with your awesome colleagues and add some excitement to your day. If you've misplaced their emails, don't worry – you can track them down right here. Let's make communication fun and effortless!</p>
+
+  <div class="email-section">
+    <h3>Select Employee</h3>
+    <div class="employee-list">
+      <div *ngFor="let employee of users" class="employee-item">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedEmployees.includes(employee)"
+            (change)="toggleEmployeeSelection(employee)"
+          />
+          {{ employee.firstName }} {{ employee.lastName }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-section">
+    <h3>Selected Employees</h3>
+    <div class="selected-employees">
+      <div *ngFor="let employee of selectedEmployees" class="selected-employee">
+        {{ employee.firstName }} {{ employee.lastName }}
+      </div>
+    </div>
+  </div>
+
+  <div class="email-action">
+    <button (click)="launchOutlook()" class="launch-button">Launch Outlook</button>
+  </div>
+</div>

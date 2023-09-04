@@ -1,0 +1,62 @@
+<h4 class="bg-blue text-white py-2 heading">Edit Client</h4>
+<hr>
+<div class="container">
+  <div class="row">  
+   
+    <form [formGroup]="clientForm" class="form-horizontal">
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="account">Account:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="account" placeholder="Enter account name" [required]="true" formControlName="account">
+        </div>
+      </div>
+       
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="department">Department:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="department" placeholder="Enter department" [required]="true" formControlName="department">
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="siteCode">Site Code:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="siteCode" placeholder="Enter site Code" [required]="true" formControlName="siteCode">
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="projectCode">Project Code:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="projectCode" placeholder="Enter project Code" [required]="true" formControlName="projectCode">
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="accountManager">Account Manager:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="accountManager" placeholder="Enter account Manager" [required]="true" formControlName="accountManager">
+        </div>
+      </div>
+     
+      <div class="form-group pt-3">
+        <div class="col-sm-offset-1 col-sm-6">
+          <button type="button" class="btn btn-lg btn-primary" (click)="client && openEditModal(client)">Edit Client</button>
+
+
+          <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-edit-confirmation-modal
+  [itemName]="itemToEdit"
+  [displayModal]="displayModal"
+  (confirmEditEvent)="editConfirmed()"
+></app-edit-confirmation-modal>

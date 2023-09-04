@@ -1,0 +1,49 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Claim Types</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/add-claimtype">
+      <i class="fa fa-plus"></i> Add Claim Type
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="onSearch()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+<div class="search-message" *ngIf="searchMessage" [ngClass]="{'red-text': searchMessage}">
+  {{ searchMessage }}
+</div>
+<div class="table-container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Name</th>
+        <th scope="col" class="table-heading">Description</th>
+        <th scope="col" class="table-heading">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="claimTypes.length > 0; else noClaimTypes">
+        <tr *ngFor="let claimType of claimTypes" class="table-row">
+          <td class="table-cell">{{ claimType.claimTypeName }}</td>
+          <td class="table-cell">{{ claimType.claimTypeDescription }}</td>
+          <td class="table-cell table-actions">
+            <button class="btn btn-sm btn-outline-primary" (click)="editClaimType(claimType.claimTypeId)">
+              <i class="fa fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteClaimType(claimType.claimTypeId)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <ng-template #noClaimTypes>
+    <div class="no-claim-types">
+      No claim types found.
+    </div>
+  </ng-template>
+</div>

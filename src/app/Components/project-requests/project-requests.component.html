@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>My Project Requests</h2>
+  <div class="text-right">
+    <button class="btn btn-primary" (click)="navigateToLogProjectRequest()">Log Project Request</button>
+  </div>
+  <div class="project-list">
+    <div *ngFor="let request of projectRequests" class="project-item">
+      <div class="project-header">
+        <h3>{{ request.ProjectRequestDescription }}</h3> <!-- Update property name -->
+        <p>Status: {{ getStatusName(request.ProjectRequestStatusId) }}</p> <!-- Update property name -->
+      </div>
+      <p class="date">{{ request.ProjectRequestDate | date: 'medium' }}</p> <!-- Update property name -->
+    </div>
+    <div *ngIf="projectRequests.length === 0" class="no-requests">
+      No project requests found.
+    </div>
+  </div>
+</div>

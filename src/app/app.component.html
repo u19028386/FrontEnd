@@ -1,0 +1,63 @@
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button *ngIf="isLoggedIn">
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Welcome to MoTime</h1>
+    <div class="profile-icon" *ngIf="isLoggedIn">
+      <img class="profile-picture" [src]="" alt="Profile Picture">
+      <span class="user-name"> Dimakatso Nyembe</span>
+      <span class="user-name"> {{userRole}}</span>
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true" class="side-container" *ngIf="isLoggedIn === true">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/login'">Login</a>
+      <a mat-list-item [routerLink]="'/register'">Register</a>
+      <a mat-list-item (click)="logout()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-container">
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-card-content>
+  <div *ngIf="isLoggedIn && userRole.includes('Consultant')">
+    <h1>Welcome, Consultant!</h1>
+    
+  </div>
+
+  <div *ngIf="isLoggedIn && userRole.includes('Administrator')">
+    <h1>Welcome, Admin!</h1>
+    
+  </div>
+
+  <div *ngIf="isLoggedIn && userRole.includes('Project Manager')">
+    <h1>Welcome, Project Manager!</h1>
+    Project Manager-specific content
+  </div>
+
+  <div *ngIf="isLoggedIn && !userRole.length">
+    <h1>No user role assigned yet, please contact support!</h1>
+    
+  </div>
+</mat-card-content> -->
+<div div class="sidebar">
+  <ng-container *ngIf="isLoggedIn()">
+    <app-side-bar></app-side-bar>
+  </ng-container>
+</div>
+<div class="main-content">
+  <router-outlet></router-outlet>
+  <ng-toast></ng-toast>
+  <app-inactive-warning *ngIf="showWarning"></app-inactive-warning>
+  <app-log-it-call></app-log-it-call>
+</div>

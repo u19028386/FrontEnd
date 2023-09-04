@@ -1,0 +1,17 @@
+<div class="modal" id="deleteConfirmationModal" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
+        </div>
+        <div class="modal-body">
+          {{ confirmationMessage }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="closeModal()" class="cancel-button">No</button>
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 

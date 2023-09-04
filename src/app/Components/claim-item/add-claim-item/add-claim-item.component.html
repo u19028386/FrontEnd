@@ -1,0 +1,29 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Claim Items</h4>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group pt-3">
+            <label for="claimItemName">Claim Item Name:</label>
+            <input type="text" id="claimItemName" name="claimItemName" [(ngModel)]="newClaimItem.claimItemName" required placeholder="Enter claim item name">
+          </div>
+          <div class="form-group pt-3">
+            <label for="claimTypeId">Claim Type:</label>
+            <select id="claimTypeId" name="claimTypeId" [(ngModel)]="newClaimItem.claimTypeId" required>
+              <option *ngFor="let claimType of claimTypes" [value]="claimType.claimTypeId">{{ claimType.claimTypeName }}</option>
+            </select>
+          </div>
+          <div class="form-group pt-3">
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+

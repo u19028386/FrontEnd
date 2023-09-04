@@ -1,0 +1,29 @@
+.bg-blue {
+    background-color: #075c86;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+ 
+  .text-white {
+    color: white;
+  }
+ 
+  .btn-primary {
+    background-color: #075c86;
+    color: white;
+  }
+ 
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #075c86;
+    color: white;
+  }
+ 
+  .container {
+    margin-top: 20px;
+  }
+ 
+  .form-horizontal .form-group {
+    margin-bottom: 20px;
+  }
+ 

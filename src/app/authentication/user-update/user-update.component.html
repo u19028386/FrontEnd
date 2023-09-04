@@ -1,0 +1,48 @@
+<div class="update-user-container">
+  <div class="bg-blue">
+    <h2 class="heading">Update User</h2>
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="title">Title:</label>
+    <select id="title" class="form-control" [(ngModel)]="title">
+      <option *ngFor="let title of titles" [value]="title.titleId">
+        {{ title.titleName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" class="form-control" [(ngModel)]="firstName">
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" class="form-control" [(ngModel)]="lastName">
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="emailAddress">Email Address:</label>
+    <input type="text" id="emailAddress" class="form-control" [(ngModel)]="emailAddress">
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="userRole">Role:</label>
+    <select id="userRole" class="form-control" [(ngModel)]="userRole">
+      <option *ngFor="let userRole of userRoles" [value]="userRole.userRoleId">
+        {{ userRole.userRoleName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group pt-3">
+    <label for="profilePicture">Upload Profile Picture:</label>
+    <input type="file" id="profilePicture" class="form-control-file" (change)="onFileChange($event)">
+  </div>
+
+  <div class="button-group">
+    <button type="button" class="btn btn-custom" (click)="onSubmit()">Update User</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Project Allocations</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addprojectAllocation">
+      <i class="fa fa-plus"></i> Allocate Employee
+    </button>
+    <div class="form-group">
+      <label for="projectFilter">Filter by Project:</label>
+      <select id="projectFilter" [(ngModel)]="selectedProject" (change)="filterTable()">
+        <option value="all">All Projects</option>
+        <option *ngFor="let project of projects" [value]="project.projectName">{{ project.projectName }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="table-container">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="table-heading">Employee Name</th>
+          <th scope="col" class="table-heading">Employee Surname</th>
+          <th scope="col" class="table-heading">Project Name</th>
+          <th scope="col" class="table-heading">Eligible To Claim</th>
+          <th scope="col" class="table-heading">Claimable Amount</th>
+          <th scope="col" class="table-heading">Total Number of Hours</th>
+          <th scope="col" class="table-heading">Billable Over Time</th>
+          <th scope="col" class="table-heading">Operational Manager</th>
+          <th scope="col" class="table-heading">Is Project Manager</th>
+          <th scope="col" class="table-heading">Claim</th>
+          <th scope="col" class="table-heading">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+      <tr *ngIf="filteredProjectAllocations.length === 0">
+          <td colspan="11">No items found.</td>
+      </tr>
+      <tr *ngFor="let allocation of filteredProjectAllocations" class="table-row">
+        
+        <td class="table-cell">{{ allocation.firstName}}</td>
+        <td class="table-cell">{{ allocation.lastName}}</td>
+        <td class="table-cell">{{ allocation.pName }}</td>
+        <td class="table-cell">{{ allocation.isEligibleToClaim }}</td>
+          <td class="table-cell">{{ allocation.claimableAmount }}</td>
+          <td class="table-cell">{{ allocation.totalNumHours }}</td>
+          <td class="table-cell">{{ allocation.billableOverTime }}</td>
+          <td class="table-cell">{{ allocation.isOperationalManager }}</td>
+          <td class="table-cell">{{ allocation.isProjectManager }}</td>
+          <td class="table-cell">{{ allocation.claim }}</td>
+
+
+          <td class="table-cell table-icons">
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(allocation)">
+              <i class="fa fa-trash"></i>Deallocate Employee</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<app-delete-confirmation-modal
+[itemName]="itemToDelete"
+(confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>
+

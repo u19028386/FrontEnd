@@ -1,0 +1,36 @@
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">full name</th>
+        <th scope="col" class="table-heading">project name</th>
+        <th scope="col" class="table-heading">claim name </th>
+        <th scope="col" class="table-heading">claim amount </th>
+        <th scope="col" class="table-heading">claimed amount </th>
+        <th scope="col" class="table-heading">proof </th>
+        <!-- <th scope="col" class="table-heading">date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let claim of claims" class="table-row">
+        <td class="table-cell">{{ claim.empname}} {{claim. emplastname}}</td>
+        <td class="table-cell">{{ claim.projectname}}</td>
+        <td class="table-cell">{{ claim.claimItemName}}</td>
+        <td class="table-cell">{{ claim.claimableAmount}}</td>
+        <td class="table-cell">{{ claim.amount}}</td>
+        <td class="table-cell"></td>
+        <!-- <td class="table-cell">{{ claim.date}}</td> -->
+
+
+       
+       
+        <!-- <td class="table-cell table-icons">
+          <i class="fas fa-edit edit-icon" (click)="edithelpTypeId(helpType.helpTypeId)"></i>
+          <span class="divider"></span>
+          <i class="fas fa-trash delete-icon" (click)="deleteHelpType(helpType.helpTypeId)"></i>
+        </td> -->
+      </tr>
+      <!-- <tr *ngIf="helpTypes.length === 0" class="table-row">
+        <td colspan="3" class="table-cell">No help types found.</td>
+      </tr> -->
+    </tbody>
+  </table>

@@ -1,0 +1,52 @@
+<div class="modal" [class.open]="isModalOpen">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Client Report</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+         <h2> Would you like to generate the client report?</h2>
+       
+          <button class="btn btn-primary" (click)=" closeModal()">Confirm</button>
+          <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <a #downloadLink style="display: none;" [type]="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></a>
+
+
+  <button (click)="downloadTableDataAsExcel()">Export To Excel</button>
+  <button class="btn btn-primary" (click)="downloadReportClient('pdf')">Download</button>
+  <h2>Client Summary</h2>
+  <div class="table-container">
+      <table class="table table-bordered table-hover" id="client">
+        <thead>
+          <tr>
+            <th scope="col" class="table-heading">Account</th>
+            <th scope="col" class="table-heading">Department</th>
+            <th scope="col" class="table-heading">Site Code</th>
+            <th scope="col" class="table-heading">Project Code</th>
+            <th scope="col" class="table-heading">Account Manager</th>
+          </tr>
+        </thead>
+        <tbody>
+   
+          <tr *ngFor="let client of clients" class="table-row">
+            <td class="table-cell">{{ client.account }}</td>
+            <td class="table-cell">{{ client.department }}</td>
+            <td class="table-cell">{{ client.siteCode }}</td>
+            <td class="table-cell">{{ client.projectCode }}</td>
+            <td class="table-cell">{{ client.accountManager }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+

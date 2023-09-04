@@ -1,0 +1,66 @@
+<h4 class="bg-blue text-white py-2 heading">Edit Role</h4>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="employeeForm">
+   
+        <div class="form-group">
+          <label for="userId">User: </label>
+          <select id="userId" formControlName="userId" required>
+            <option *ngFor="let user of users" [value]="user.userId" disabled>{{ user.firstName}} {{ user.lastName}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="resourceId">Resource:</label>
+          <select id="resourceId" formControlName="resourceId" required>
+            <option *ngFor="let resource of resources" [ngValue]="resource.resourceId">{{ resource.resourceName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="employeetypeId">Employee Type:</label>
+          <select id="employeeTypeId" formControlName="employeeTypeId" required>
+            <option *ngFor="let type of employeeTypes" [ngValue]="type.employeeTypeId">{{ type.employeeTypeName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="employeeStatusId">Employee Status:</label>
+          <select id="employeeStatusId" formControlName="employeeStatusId" required>
+            <option *ngFor="let status of employeeStatuses" [ngValue]="status.employeeStatusId">{{status.employeeStatusName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="regionId">Region:</label>
+          <select id="regionId" formControlName="regionId" required>
+            <option *ngFor="let region of regions" [ngValue]="region.regionId">{{ region.regionName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="divisionId">Division:</label>
+          <select id="divisionId" formControlName="divisionId" required>
+            <option *ngFor="let division of divisions" [ngValue]="division.divisionId">{{ division.divisionName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="managertypeId">Manager Type:</label>
+          <select id="managerTypeId" formControlName="managerTypeId">
+            <option *ngFor="let managerType of managerTypes" [ngValue]="managerType.managerTypeId">{{ managerType.managerTypeName }}</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-lg btn-primary" (click)="eemployee && openEditModal(eemployee)">Edit Employee</button>
+        <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+<app-edit-confirmation-modal
+[itemName]="itemToEdit"
+[displayModal]="displayModal"
+(confirmEditEvent)="editConfirmed()"
+></app-edit-confirmation-modal>
+
+
+
+

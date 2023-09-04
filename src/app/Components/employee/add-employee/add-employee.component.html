@@ -1,0 +1,100 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Employeee</h4>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group pt-3">
+          <label for="userId">User:</label>
+            <select id="userId" formControlName="userId" required>
+              <option value="" disabled>Select User</option>
+              <option *ngFor="let user of users" [value]="user.userId">
+              {{ user.firstName }} {{ user.lastName }}
+              </option>
+            </select>
+            <div *ngIf="isSubmitted && employeeForm.get('userId')?.errors?.['required']" class="text-danger">User is required.</div>
+        </div>
+
+
+
+        <div class="form-group pt-3">
+          <label for="resourceId">Resource:</label>
+            <select  id="resourceId" formControlName="resourceId" required>
+              <option value="" disabled>Select a resource</option>
+              <option *ngFor="let resource of resources" [value]="resource.resourceId">
+              {{ resource.resourceName }}
+              </option>
+            </select>
+          <div *ngIf="isSubmitted && employeeForm.get('resourceId')?.errors?.['required']" class="text-danger">Resource is required.</div>
+        </div>
+ 
+      <div class="form-group pt-3">
+        <label for="employeeTypeId">Employee Type:</label>
+        <select id="employeeTypeId" formControlName="employeeTypeId" required (change)="updateManager()">
+          <option value="" disabled>Select employee type</option>
+          <option *ngFor="let type of employeeTypes" [value]="type.employeeTypeId" >
+            {{ type.employeeTypeName }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && employeeForm.get('employeeTypeId')?.errors?.['required']" class="text-danger">Employee Type is required.</div>
+      </div>
+
+   
+      <div class="form-group pt-3">
+        <label for="managerTypeId">Manager Type:</label>
+          <select id="managerTypeId" formControlName="managerTypeId" required [disabled]="!employeeForm.get('employeeTypeId')?.value">
+            <option value="" disabled>Select manager Type</option>
+            <option *ngFor="let managerType of managerTypes" [value]="managerType.managerTypeId">
+            {{ managerType.managerTypeName }}
+            </option>
+          </select>
+          <div *ngIf="isSubmitted && employeeForm.get('managerTypeId')?.errors?.['required']" class="text-danger">Manager Type is required.</div>
+      </div>
+ 
+
+
+      <div class="form-group pt-3">
+        <label for="employeeStatusId">Employee Status:</label>
+          <select id="employeeStatusId" formControlName="employeeStatusId" required>
+            <option value="" disabled>Select employee status</option>
+            <option *ngFor="let status of employeeStatuses" [value]="status.employeeStatusId">
+              {{ status.employeeStatusName }}
+            </option>
+          </select>
+          <div *ngIf="isSubmitted && employeeForm.get('employeeStatusId')?.errors?.['required']" class="text-danger">Employee Status is required.</div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label for="regionId">Region:</label>
+          <select id="regionId"  formControlName="regionId" required>
+            <option value="" disabled>Select region</option>
+            <option *ngFor="let region of regions" [value]="region.regionId">
+              {{ region.regionName }}
+            </option>
+          </select>
+          <div *ngIf="isSubmitted && employeeForm.get('regionId')?.errors?.['required']" class="text-danger">Region is required.</div>
+      </div>
+
+
+
+      <div class="form-group pt-3">
+        <label for="divisionId">Division:</label>
+        <select id="divisionId" formControlName="divisionId" required>
+          <option value="" disabled>Select a division</option>
+          <option *ngFor="let division of divisions" [value]="division.divisionId">
+            {{ division.divisionName }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && employeeForm.get('divisionId')?.errors?.['required']" class="text-danger">Division is required.</div>
+      </div>
+      <div class="form-group pt-3">
+        <button type="submit"  class="btn btn-lg btn-primary">Add Employee</button>
+        <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+  </div>

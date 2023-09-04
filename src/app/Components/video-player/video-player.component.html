@@ -1,0 +1,11 @@
+<div class="video-container" *ngIf="videoUrl">
+    <video width="100%" height="auto" controls>
+      <source [src]="videoUrl" [type]="getVideoMimeType(videoUrl)">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  
+  <div class="back-button">
+    <button routerLink="/user-help">Back</button>
+  </div>

@@ -1,0 +1,13 @@
+<div *ngIf="userDetails">
+    <h2>User Details</h2>
+    <p><strong>User ID:</strong> {{ userDetails.userId }}</p>
+    <p><strong>ID Number:</strong> {{ userDetails.idNumber }}</p>
+    <p><strong>First Name:</strong> {{ userDetails.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ userDetails.lastName }}</p>
+    <p><strong>Email:</strong> {{ userDetails.email }}</p>
+    <p><strong>Preferred Name:</strong> {{ userDetails.preferredName }}</p>
+    <p><strong>Date of Hire:</strong> {{ userDetails.dateOfHire | date }}</p>
+    <p><strong>Cellphone Number:</strong> {{ userDetails.cellphoneNumber }}</p>
+    <p><strong>Is Active:</strong> {{ userDetails.isActive ? 'Yes' : 'No' }}</p>
+  </div>
+  

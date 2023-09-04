@@ -1,0 +1,56 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Clients</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addclient">
+      <i class="fa fa-plus"></i> Add Client
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchName" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="search()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+
+<div class="table-container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Account</th>
+        <th scope="col" class="table-heading">Department</th>
+        <th scope="col" class="table-heading">Site Code</th>
+        <th scope="col" class="table-heading">Project Code</th>
+        <th scope="col" class="table-heading">Account Manager</th>
+        <th scope="col" class="table-heading">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="filtered.length === 0">
+            <td colspan="5">No items found.</td>
+    </tr>
+
+
+      <tr *ngFor="let client of filtered" class="table-row">
+        <td class="table-cell">{{ client.account }}</td>
+        <td class="table-cell">{{ client.department }}</td>
+        <td class="table-cell">{{ client.siteCode }}</td>
+        <td class="table-cell">{{ client.projectCode }}</td>
+        <td class="table-cell">{{ client.accountManager }}</td>
+        <td class="table-cell table-icons">
+          <button style="margin-right: 1em;" [routerLink]="['/client', client.clientId]" type="button" class="btn btn-sm btn-outline-primary">
+            <i class="fa fa-edit"></i> Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(client)">
+            Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-delete-confirmation-modal
+[itemName]="itemToDelete"
+(confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>
+
+

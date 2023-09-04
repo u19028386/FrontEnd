@@ -1,0 +1,61 @@
+.email-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  color: black; /* Default text color */
+}
+
+
+.email-heading {
+  background-color: #075c86; /* Theme blue color for background */
+  color: white; /* White text color */
+  margin: 10px 0; /* Adjust the margin for top and bottom */
+  padding: 10px 0; /* Add padding to the heading */
+}
+
+
+.email-section {
+  margin-bottom: 20px;
+}
+
+
+.employee-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+
+.employee-item {
+  margin-bottom: 10px;
+}
+
+
+.selected-employees {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+
+.selected-employee {
+  margin-bottom: 10px;
+}
+
+
+.email-action {
+  margin-top: 20px;
+}
+
+
+.launch-button {
+  background-color: #0ed603; /* Button background color */
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.launch-button:hover {
+  background-color: #138496; /* Hover state background color */
+}

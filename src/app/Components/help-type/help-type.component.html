@@ -1,0 +1,44 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Help Types</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/help-type/add">
+      <i class="fa fa-plus"></i> Add Help Type
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="onSearch()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+<div class="search-message" *ngIf="searchMessage">{{ searchMessage }}</div> <!-- Display search messages -->
+<div class="table-container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Name</th>
+        <th scope="col" class="table-heading">Description</th>
+        <th scope="col" class="table-heading">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let helpType of helpTypes" class="table-row">
+        <td class="table-cell">{{ helpType.helpTypeName }}</td>
+        <td class="table-cell">{{ helpType.helpTypeDescription }}</td>
+        <td class="table-cell table-actions">
+          <button class="btn btn-sm btn-outline-primary" (click)="edithelpTypeId(helpType.helpTypeId)">
+            <i class="fa fa-edit"></i> Edit
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteHelpType(helpType.helpTypeId)">
+            <i class="fa fa-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="helpTypes.length === 0" class="table-row">
+        <td colspan="3" class="table-cell">No help types found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

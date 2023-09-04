@@ -1,0 +1,36 @@
+<h4>Edit Resource Type</h4>
+<hr>
+<div class="container">
+<div class="row">  
+<form [formGroup]="resourcetypeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class=" col-sm-1" for="resourceTypeName">Name:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="resourceTypeName" placeholder="Enter name" [required]="true" formControlName="resourceTypeName">
+        </div>
+    </div>
+ 
+    <div class="form-group">
+        <label class="col-sm-1" for="resourceTypeDescription">Description:</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" type="text" id="resourceTypeDescription" placeholder="Enter description" [required]="true" formControlName="resourceTypeDescription"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-6">
+        <button type="button" class="btn btn-sm btn-danger" (click)="resourcetype && openEditModal(resourcetype)">Edit Resource Type</button>
+
+
+        <button type="button" class="btn btn-sm btn-warning" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+<app-edit-confirmation-modal
+  [itemName]="itemToEdit"
+  [displayModal]="displayModal"
+  (confirmEditEvent)="editConfirmed()"
+></app-edit-confirmation-modal>

@@ -1,0 +1,55 @@
+<div class="system-help-container">
+  <div class="heading">
+    <h1>System Help</h1>
+  </div>
+  <p> Are you confused about anything in the system? This section helps with the most confusing parts of
+    the system. Watch a video or download a manual to clear your confusion!
+
+    If you are still experiencing problems, contact IT support by clicking on the settings icon!
+    
+    Enjoy a seamless time capturing experience!
+  </p>
+  <div class="actions">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search helps" class="search-input">
+      <button (click)="searchHelps()" class="search-button">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <div *ngIf="isSearchCriteriaEmpty" class="search-error">
+      Please enter a search criterion.
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="table-heading">Help Name</th>
+          <th scope="col" class="table-heading">Description</th>
+          <th scope="col" class="table-heading">Actions</th>
+        </tr>
+      </thead>
+      <ng-container *ngIf="!isNoHelpsFound; else noHelpsFound">
+        <tr *ngFor="let help of helps" class="table-row">
+          <td class="table-cell">{{ help.helpName }}</td>
+          <td class="table-cell">{{ help.helpDescription }}</td>
+          <td class="table-cell table-icons">
+            <ng-container *ngIf="isVideo(help.fileName)">
+              <i class="fa fa-play play-icon" (click)="playVideo(help.helpId)"></i>
+            </ng-container>
+            <ng-container *ngIf="!isVideo(help.fileName)">
+              <i class="fa fa-download download-icon" (click)="downloadHelp(help)"></i>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+
+  <ng-template #noHelpsFound>
+    <div class="no-helps-found">
+      No helps found.
+    </div>
+  </ng-template>
+</div>

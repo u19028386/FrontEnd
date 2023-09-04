@@ -1,0 +1,54 @@
+.add-role-section {
+    padding: 20px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* White font color */
+    background-color: #075c86; /* Background color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-horizontal .control-label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+  }
+
+  .btn-primary {
+    background-color: #075c86;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #075c86;
+  }
+
+  .btn-secondary {
+    background-color: #ccc;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background-color: #999;
+  }

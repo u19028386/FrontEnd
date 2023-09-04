@@ -1,0 +1,67 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Employees</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addemployee">
+      <i class="fa fa-plus"></i> Add Employee
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchName" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="search()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <div class="table-container">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Name</th>
+        <th scope="col" class="table-heading">Surname</th>
+        <th scope="col" class="table-heading">Resource</th>
+        <th scope="col" class="table-heading">Type</th>
+        <th scope="col" class="table-heading">Status</th>
+        <th scope="col" class="table-heading">Division</th>
+        <th scope="col" class="table-heading">Region</th>
+        <th scope="col" class="table-heading">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filtered.length === 0">
+        <td colspan="8">No items found.</td>
+      </tr>
+      <tr *ngFor="let employee of filtered">
+
+
+        <td>{{ employee.pFirstName }}</td>
+        <td>{{ employee.pLastName}}</td>
+        <td>{{ employee.pResource }}</td>
+        <td>{{ employee.pType}}</td>
+        <td>{{ employee.pStatus}}</td>
+        <td>{{ employee.pDivision}}</td>
+        <td>{{ employee.pRegion}}</td>
+        <td>
+          <button style="margin-right: 1em;" [routerLink]="['/employee', employee.employeeId]" class="btn btn-sm btn-outline-info">
+            <i class="fa fa-eye"></i>View</button>
+          <button style="margin-right: 1em;" [routerLink]="['/eemployee', employee.employeeId]" type="button" class="btn btn-sm btn-outline-primary">
+            <i class="fa fa-edit"></i>Edit
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(employee)">
+            <i class="fa fa-trash"></i>  Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div>
+  <button class="btn btn-sm btn-primary" routerLink="/employee-types">
+    Manage Employee Types
+  </button>
+</div>
+
+  <app-delete-confirmation-modal
+  [itemName]="itemToDelete"
+  (confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>

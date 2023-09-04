@@ -1,0 +1,174 @@
+<style>
+    /* Style the button */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Place the overlay on top of other elements */
+}
+
+
+.popup-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.submitAccept-button {
+  padding: 10px 20px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submitReject-button {
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #0056b3;
+}
+</style>
+
+
+<h1>Employee submitted Timesheets</h1>
+<table  *ngIf="timesheets?.length" datatable [dtOptions]="dtOption" style="width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #000; padding: 8px;">Employee Full Name</th>
+            <th style="border: 1px solid #000; padding: 8px;">Time sheet Year</th>
+            <th style="border: 1px solid #000; padding: 8px;">Time sheet Month</th>
+            <th style="border: 1px solid #000; padding: 8px;">Submitted date</th>
+            <th style="border: 1px solid #000; padding: 8px;">Project(s)</th>
+            <th style="border: 1px solid #000; padding: 8px;">Total Hours</th>
+            <th style="border: 1px solid #000; padding: 8px;">Status</th>
+            <th style="border: 1px solid #000; padding: 8px;">Actions</th>
+            <th style="border: 1px solid #000; padding: 8px;">Approve/Reject</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of this.timesheets">
+            <td style="border: 1px solid #000; padding: 8px;">{{item.fullname}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.year}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.month}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.submitteddate}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.projects}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.totalHours}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">{{item.status}}</td>
+            <td style="border: 1px solid #000; padding: 8px;">
+            <button class="submit-button" (click)="showEmployeeTimeSheet(item.monthnum, item.empId)"  >Show Employee Timsheet Entries</button>
+           
+            </td>
+            <td style="border: 1px solid #000; padding: 8px;">
+                <button *ngIf="item.status == 'Pending'"  class="submitAccept-button" (click)="onApproveOrReject(item.timesheetID,2)" >Approve Timesheet</button>
+                <br><br>
+                <button  *ngIf="item.status == 'Pending'"  class="submitReject-button" (click)="onApproveOrReject(item.timesheetID,3)" >Reject Timesheet</button>
+            </td>
+        </tr>
+       
+    </tbody>
+</table>
+
+
+<div class="popup-overlay" *ngIf="ShowTimesheet" style="overflow: auto;">
+  <div class="popup-container card" style="width: 50%; height: 80%;">
+    <div id="pdf-content" class="employee-card">
+    <h2 ><b>{{this.currentMonth}} Timesheet Entries</b></h2>
+    <br>
+    <div class="employee-card">
+      <div class="employee-details-container" *ngIf="SelectedEmployee">
+        <h2 class="employee-details-header">Employee Details</h2>
+        <div class="employee-details-property">
+          <span class="employee-details-label">ID Number:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.idNumber }}</span>
+        </div>
+        <div class="employee-details-property">
+          <span class="employee-details-label">First Name:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.firstName }}</span>
+        </div>
+        <div class="employee-details-property">
+          <span class="employee-details-label">Last Name:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.lastName }}</span>
+        </div>
+        <div class="employee-details-property">
+          <span class="employee-details-label">Email Address:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.emailAddress }}</span>
+        </div>
+        <div class="employee-details-property">
+          <span class="employee-details-label">Cellphone Number:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.cellphoneNumber }}</span>
+        </div>
+      </div>
+    </div>
+   
+    <br>
+    <br>
+    <div id="contentToConvert" style="width: 100%; height: 50%; overflow: auto;">
+    <table id="excel-table" *ngIf="EmployeeProjectReportHours.length" datatable [dtOptions]="dtOption" style="width: 100%; border-collapse: collapse;">
+      <thead>
+          <tr>
+              <th style="border: 1px solid #000; padding: 8px;">Project Name</th>
+              <th style="border: 1px solid #000; padding: 8px;">Hours</th>
+              <th style="border: 1px solid #000; padding: 8px;">Start</th>
+              <th style="border: 1px solid #000; padding: 8px;">End</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of EmployeeProjectReportHours">
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.projectName }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.totalHours }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.start }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.end }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+  </div>
+    <div class="buttons">
+      <button (click)="onConfirmationCancel()">Cancel</button>
+      <button  (click)="generateExcel()">Generate Excel Report </button>
+      <button  (click)="convetToPDF()">Generate PDf Report</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="popup-overlay" *ngIf="confirmationDialog" style="overflow: auto;">
+  <div class="popup-container card" style="width: 30%; height: 25%;">
+   
+    <h1>Do you confirm this action?</h1>
+    <p style="color: red;"><b>This cannot be undone</b></p>
+    <div class="buttons">
+      <button class="submitAccept-button" (click)="onConfirm()">Submit</button>
+      <button class="submitReject-button"  (click)="onConfirmationCancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Employee</h4>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form [formGroup]="employeetypeForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+          <div class="form-group pt-3">
+            <label class="col-sm-1" for="employeeTypeName">Name:</label>
+            <div class="col-sm-6">
+              <input class="form-control" id="employeeTypeName" placeholder="Enter name" [required]="true" formControlName="employeeTypeName">
+              <div *ngIf="isSubmitted && employeetypeForm.get('employeeTypeName')?.errors?.['required']" class="text-danger">Name is required.</div>
+            </div>
+          </div>
+       
+          <div class="form-group pt-3">
+            <label class="col-sm-1" for="employeeTypeDescription">Description:</label>
+            <div class="col-sm-6">
+              <textarea class="form-control" id="employeeTypeDescription" placeholder="Enter description" [required]="true" formControlName="employeeTypeDescription"></textarea>
+              <div *ngIf="isSubmitted && employeetypeForm.get('employeeTypeDescription')?.errors?.['required']" class="text-danger">Description is required.</div>
+            </div>
+          </div>
+     
+          <div class="form-group pt-3">
+            <div class="col-sm-offset-1 col-sm-6">
+              <button style="margin-right: 1em;" type="submit" class="btn btn-lg btn-primary">Add Employee Type</button>
+              <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

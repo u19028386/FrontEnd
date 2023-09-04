@@ -1,0 +1,307 @@
+.outer {
+    height: 100vh;
+    background: linear-gradient(to top, #ffffff 50%, #ffffff 90%) no-repeat;
+}
+
+.panel-heading {
+    text-align: center;
+    margin-bottom: 10px;
+}
+#forget {
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: none;
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.panel {
+    min-height: 380px;
+    box-shadow: 20px 20px 80px rgb(218 218 218);
+    border-radius: 12px;
+    margin-top: 100px;
+}
+
+.input-field
+{
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff;
+}
+
+.input-field.error {
+    border: 1px solid red;
+    color: red;
+}
+input[type='text'],
+input[type='password']{
+    border:none;
+    outline: none;
+    box-shadow: none;
+    width: 100%
+}
+
+.fa-eye-slash.btn{
+    border: none;
+}
+img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+}
+.bordert{
+    border-top: 1px solid #aaa;
+    position: relative;
+}
+.bordert:after{
+    content: "or go to";
+    position: absolute;
+    top: -13px;
+    left: 33%;
+    background-color: #fff;
+    padding: 0 8px;
+}
+.select-dropdown {
+    width: 100%;
+    overflow-y: auto; /* Add vertical scroll if necessary */
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff;
+  }
+  .select-dropdown option {
+    color: black; /* Set the desired text color */
+  }
+
+  .btn-custom {
+    background-color: #075c86;
+    color: white; /* Text color for better contrast */
+    border-color: #075c86; /* Border color same as background */
+    font-weight: bold;
+  }
+  .btn-cancel {
+    background-color: #969b9d;
+    color: white; /* Text color for better contrast */
+    border-color: #969b9d; /* Border color same as background */
+    font-weight: bold;
+  }
+
+
+  .roles-section {
+    padding: 20px;
+  }
+
+  .heading {
+        font-size: 24px;
+        font-weight: bold;
+        color: white; /* White font color */
+        background-color: #075c86; /* Background color */
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .add-button {
+    background-color: #075c86;
+    color: white;
+    transition: background-color 0.3s;
+  }
+
+  .add-button:hover {
+    background-color: #075c86;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .search-button {
+    background-color: #075c86;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .search-button:hover {
+    background-color: #075c86;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .table th, .table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  .table-heading {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+  }
+
+  .table-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn {
+    padding: 5px 10px;
+  }
+
+  .btn-outline-primary {
+    color: #075c86;
+    border-color: #075c86;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #075c86;
+    color: white;
+  }
+
+  .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .add-role-section {
+    padding: 20px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* White font color */
+    background-color: #075c86; /* Background color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-horizontal .control-label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+  }
+
+  .btn-primary {
+    background-color: #075c86;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #075c86;
+  }
+
+  .btn-secondary {
+    background-color: #ccc;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background-color: #999;
+  }
+
+  /* Add this CSS to your global stylesheet or component stylesheet */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 20px;
+  width: 250px;
+  background-color: #f8f9fa; /* Sidebar background color */
+  border-right: 1px solid #dee2e6; /* Sidebar border */
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+.sidebar.collapsed {
+  width: 50px; /* Adjust the width when the sidebar is collapsed */
+}
+
+/* Adjust the main content to create space for the sidebar */
+.main-content {
+  margin-left: 250px; /* Width of the sidebar */
+  padding: 20px;
+  margin-left: 250px; /* Width of the expanded sidebar */
+  transition: margin-left 0.3s ease;
+}
+.main-content.collapsed {
+  margin-left: 50px; /* Width of the collapsed sidebar */
+}
+.button-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+

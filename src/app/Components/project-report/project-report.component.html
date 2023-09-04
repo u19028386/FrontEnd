@@ -1,0 +1,59 @@
+
+<div class="modal" [class.open]="isModalOpen">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Project Report</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+         <h2> Would you like to generate the project report?</h2>
+       
+          <button class="btn btn-primary" (click)=" closeModal()">Confirm</button>
+          <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <a #downloadLink style="display: none;" [type]="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"></a>
+
+
+  <button (click)="downloadTableDataAsExcel()">Export To Excel</button>
+  <button (click)="downloadReportp('pdf')">Download</button>
+
+
+  <h2>Project Summary</h2>
+  <div class="table-container">
+    <table class="table table-bordered table-hover" id="project">
+      <thead>
+        <tr>
+          <th scope="col" class="table-heading">Project Name</th>
+          <th scope="col" class="table-heading">Client</th>
+          <th scope="col" class="table-heading">Status</th>
+          <th scope="col" class="table-heading">Start Date</th>
+          <th scope="col" class="table-heading">End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <tr *ngFor="let project of projects" class="table-row">
+          <td class="table-cell">{{ project.projectName }}</td>
+          <td class="table-cell">{{ project.pClient }}</td>
+          <td class="table-cell">{{ project.pStatus }}</td>
+          <td class="table-cell">{{ project.startDate   }}</td>
+          <td class="table-cell">{{ project.endDate  }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+

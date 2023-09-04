@@ -1,0 +1,48 @@
+.it-call-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  
+  
+    .contact-button {
+      background-color: #075c86;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 16px 32px;
+      font-size: 20px;
+  
+  
+      &:hover {
+        background-color: #064c6e;
+      }
+    }
+  
+  
+    .expanded-content {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-top: 10px;
+  
+  
+      .blue-heading {
+        color: #075c86;
+       
+      }
+  
+  
+      .email-link {
+        color: #075c86;
+        text-decoration: none;
+  
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  

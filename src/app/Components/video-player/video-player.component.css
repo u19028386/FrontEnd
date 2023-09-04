@@ -1,0 +1,29 @@
+.video-container {
+    width: 100%;
+    position: relative;
+  }
+ 
+  .video-container video {
+    width: 100%;
+    /* max-height: calc(100vh - 50px); */
+    max-height: calc(100vh - 100px);
+   
+  }
+ 
+  .back-button {
+    position: absolute;
+    bottom: 20px; /* Adjust as needed for more spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+ 
+  .back-button button {
+    background-color: #075c86;
+    color: white;
+    padding: 10px 20px; /* Adjust padding for width and height */
+    font-size: 20px; /* Adjust font size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

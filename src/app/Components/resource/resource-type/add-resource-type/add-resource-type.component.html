@@ -1,0 +1,30 @@
+<h4>Add Resource Type</h4>
+<hr>
+<div class="container">
+  <div class="row">  
+    <form [formGroup]="resourcetypeForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="col-sm-1" for="resourceTypeName">Name:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="resourceTypeName" placeholder="Enter name"  formControlName="resourceTypeName" required>
+          <div *ngIf="isSubmitted && resourcetypeForm.get('resourceTypeName')?.errors?.['required']" class="text-danger">Name is required.</div>
+        </div>
+      </div>
+       
+      <div class="form-group">
+        <label class="col-sm-1" for="resourceTypeDescription">Description:</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" id="resourceTypeDescription" placeholder="Enter description" formControlName="resourceTypeDescription" required></textarea>
+          <div *ngIf="isSubmitted && resourcetypeForm.get('resourceTypeDescription')?.errors?.['required']" class="text-danger">Description is required.</div>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-6">
+          <button style="margin-right: 1em;" type="submit" class="btn btn-sm btn-default">Add Resource Type</button>
+          <button type="button" class="btn btn-sm btn-warning" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

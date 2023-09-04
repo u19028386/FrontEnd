@@ -1,0 +1,298 @@
+<style>
+  .toolbar {
+    margin: 10px 0px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .toolbar-item {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+  }
+ 
+
+
+  /* ... Other CSS styles ... */
+
+
+/* Style the popup overlay */
+/* ... Other CSS styles ... */
+
+
+/* Style the popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Place the overlay on top of other elements */
+}
+
+
+.popup-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.employee-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+h2 {
+  margin-top: 0;
+}
+
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+
+label {
+  font-weight: bold;
+}
+
+
+
+
+.employee-details-header {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+
+.employee-details-property {
+  margin: 8px 0;
+}
+
+
+.employee-details-label {
+  font-weight: bold;
+}
+
+
+.employee-details-value {
+  margin-left: 8px;
+}
+.employee-details-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+textarea,
+select,
+input[type="text"],
+input[type="time"],
+input[type="number"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.buttons button {
+  margin-left: 10px;
+}
+
+
+
+
+/* Style the button */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Optional: Add hover effect */
+.submit-button:hover {
+  background-color: #0056b3;
+}
+/* ... Other CSS styles ... */
+
+
+
+
+/* ... Other CSS styles ... */
+
+
+</style>
+
+
+<div class="toolbar">
+  <div class="toolbar-item">
+    Month: &nbsp;
+    <select (change)="monthSelectedChanged()" [(ngModel)]="selectedMonth">
+      <option *ngFor="let month of months; index as i" [value]="i" (click)="monthSelected(i)">{{ month }} </option>
+    </select>
+  </div>
+  <div class="toolbar-item">
+    Employee: &nbsp;
+    <select [(ngModel)]="employee" (change)="employeeSelected($event)">
+      <option *ngFor="let e of employees" [value]="e.userId">{{e.firstName}} {{e.lastName}}</option>
+    </select>
+  </div>
+ 
+  <div class="toolbar-item">
+    <input type="checkbox" id="nonbusiness" [(ngModel)]="config.showNonBusiness"> <label for="nonbusiness">Show non-business days and hours</label>
+  </div>
+  <div style="margin-left: 5%;">
+    <input type="submit" class="submit-button"  (click)="showConfirmationDialog()"  value="Submit Timesheet">
+  </div>
+ 
+  <!-- Dropdown box of months -->
+</div>
+
+
+<daypilot-scheduler *ngIf="isScheduleVisible"  #timesheet [config]="config"></daypilot-scheduler>
+<div class="popup-overlay" *ngIf="isPopupVisible">
+  <div class="popup-container card" style="width: 50%; float: left;">
+    <div *ngIf="this.showprojectHours" style="float: right; width: 20%;">
+      <h2>Project Hours</h2>
+      <br>
+      <!-- This is an intentional error to be ignored -->
+      <p>Total Outstanding Hours: {{this.EmployeeProjectHours.totalNumHours}}</p>
+      <br>
+      <p>Billable Overtime Hours: {{this.EmployeeProjectHours.billableOverTime}}</p>
+      <br>
+    </div>
+    <div style="float: left;width: 70%;">
+    <h2>{{this.action}} Time Card</h2>
+    <form #timecardForm="ngForm">
+      <div class="form-group">
+        <label for="project">Project:</label>
+        <select [(ngModel)]="selectedProject" (change)="SelectedshowProjectHours()"  id="project" name="project" required>
+          <option *ngFor="let project of projects" [value]="project.projectId">{{ project.projectName }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input required type="text" id="title" [(ngModel)]="title" name="title"> <!-- Add 'required' and 'name' attributes -->
+      </div>
+      <div class="form-group">
+        <label for="comments">Comments:</label>
+        <textarea required id="comments" [(ngModel)]="comments" placeholder="Comments cannot exceed 350 characters" maxlength="350" name="comments"></textarea> <!-- Add 'required' and 'name' attributes -->
+      </div>
+    <div *ngIf="this.action=='Create'"  class="form-group">
+      <label for="startTime">Start Time:</label>
+      <input [readonly]="true" type="time" id="startTime"  [ngModelOptions]="{standalone: true}"  name="startTime" [(ngModel)]="startTime">
+    </div>
+    <div *ngIf="this.action=='Create'"  class="form-group">
+      <label for="endTime">End Time:</label>
+      <input [readonly]="true" type="time"  [ngModelOptions]="{standalone: true}" id="endTime"  name="endTime" [(ngModel)]="endTime">
+    </div>
+    <div class="buttons">
+      <button (click)="onCancel()">Cancel</button>
+      <button *ngIf="this.action=='Create'" [disabled]="!timecardForm.valid" (click)="createNewEvent()">Create</button>
+      <button *ngIf="this.action=='Update'" [disabled]="!timecardForm.valid" (click)="updateEvent()">Update</button>
+
+
+    </div>
+  </form>
+</div>
+  </div>
+</div>
+<div class="popup-overlay" *ngIf="ConfirmSubmit">
+  <div class="popup-container card" style="width: 50%; height: 80%;">
+    <div id="pdf-content" class="employee-card">
+    <h2 ><b>{{this.currentMonth}} Timesheet</b></h2>
+    <br>
+    <br>
+    <br>
+    <div class="employee-card">
+      <div class="employee-details-container" *ngIf="SelectedEmployee">
+        <!-- <h2 class="employee-details-header">Employee Details</h2> -->
+        <!-- <div class="employee-details-property">
+          <span class="employee-details-label">ID Number:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.idNumber }}</span>
+        </div> -->
+        <div class="employee-details-property">
+          <span class="employee-details-label">First Name:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.firstName }}</span>
+        </div>
+        <div class="employee-details-property">
+          <span class="employee-details-label">Last Name:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.lastName }}</span>
+        </div>
+        <!-- <div class="employee-details-property">
+          <span class="employee-details-label">Preferred Name:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.preferredName }}</span>
+        </div> -->
+        <div class="employee-details-property">
+          <span class="employee-details-label">Email Address:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.emailAddress }}</span>
+        </div>
+        <!-- <div class="employee-details-property">
+          <span class="employee-details-label">Cellphone Number:</span>
+          <span class="employee-details-value">{{ SelectedEmployee.cellphoneNumber }}</span>
+        </div> -->
+      </div>
+    </div>
+   
+    <br>
+    <br>
+    <div id="contentToConvert" style="width: 100%; height: 50%; overflow: auto;">
+    <table id="excel-table" *ngIf="EmployeeProjectReportHours.length" datatable [dtOptions]="dtOption" style="width: 100%; border-collapse: collapse;">
+      <thead>
+          <tr>
+              <th style="border: 1px solid #000; padding: 8px;">Project Name</th>
+              <th style="border: 1px solid #000; padding: 8px;">Hours</th>
+              <th style="border: 1px solid #000; padding: 8px;">Start</th>
+              <th style="border: 1px solid #000; padding: 8px;">End</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of EmployeeProjectReportHours">
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.projectName }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.totalHours }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.start }}</td>
+              <td style="border: 1px solid #000; padding: 8px;">{{ item.end }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+  </div>
+
+
+ 
+    <div class="buttons">
+      <button (click)="onConfirmationCancel()">Cancel</button>
+      <button *ngIf="this.Submittable"  (click)="submitTimeMonthlyTimesheet()">Submit</button>
+      <button  (click)="generateExcel()">Generate Excel Report </button>
+      <button  (click)="convetToPDF()">Generate PDf Report</button>
+    </div>
+  </div>
+</div>

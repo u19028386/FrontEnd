@@ -1,0 +1,54 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Users</h2>
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/register">
+      <i class="fa fa-plus"></i> Create User Account
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="onSearch()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+    
+    <div class="table-container">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="table-heading">#</th>
+            <th scope="col" class="table-heading">Title</th>
+            <th scope="col" class="table-heading">First Name</th>
+            <th scope="col" class="table-heading">Last Name</th>
+            <th scope="col" class="table-heading">Email</th>
+            <th scope="col" class="table-heading">Role</th>
+            <th scope="col" class="table-heading">Is Active</th>
+            <th scope="col" class="table-heading">Update Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td class="table-cell">{{ i + 1 }}</td>
+            <td class="table-cell">{{ getTitleNameById(user.titleId)}}</td>
+            <td class="table-cell">{{ user.firstName }}</td>
+            <td class="table-cell">{{ user.lastName }}</td>
+            <td class="table-cell">{{ user.emailAddress }}</td>
+            <td class="table-cell">{{ getUserRoleNameById(user.userRoleId) }}</td>
+            <td class="table-cell">{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" (click)="updateUser(user)">
+                <i class="fa fa-edit"></i> Update User Details
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="deactivateUser(user)">
+                <i class="fa fa-trash"></i> Deactivate User Account
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  
+  

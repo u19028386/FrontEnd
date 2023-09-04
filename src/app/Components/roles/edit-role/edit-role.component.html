@@ -1,0 +1,25 @@
+<h4 class="bg-blue text-white py-2 heading">Edit Role</h4>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="RoleForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="form-group pt-3">
+          <label for="name">Role Name:</label>
+          <input type="text" class="form-control" id="name" formControlName="userRoleName" required>
+        </div>
+
+
+        <div class="form-group pt-3">
+          <label for="description">Role Description:</label>
+          <textarea class="form-control" id="description" formControlName="userRoleDescription" rows="4"></textarea>
+        </div>
+        <div class="btn-group">
+          <button type="submit" class="btn btn-lg btn-primary">Save</button>
+          <span style="margin-right: 10px;"></span>
+          <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

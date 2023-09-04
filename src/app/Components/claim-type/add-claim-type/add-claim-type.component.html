@@ -1,0 +1,40 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Claim Type</h4>
+  <hr>
+ <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form [formGroup]="claimTypeForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="col-sm-2" for="name">Name:</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="name" placeholder="Enter name" formControlName="claimTypeName">
+            <div *ngIf="claimTypeForm.get('claimTypeName')?.hasError('pattern') && claimTypeForm.get('claimTypeName')?.dirty" class="text-danger">
+              Please enter a valid claim type name with no numbers or special characters.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-sm-2" for="description">Description:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" type="text" id="description" placeholder="Enter description" formControlName="claimTypeDescription"></textarea>
+            <div *ngIf="claimTypeForm.get('claimTypeDescription')?.hasError('pattern') && claimTypeForm.get('claimTypeDescription')?.dirty" class="text-danger">
+              Please enter a valid claim type description with no numbers or special characters.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button style="margin-right: 1em;" type="submit" [disabled]="!claimTypeForm.valid" class="btn btn-sm btn-primary">Submit</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Client</h4>
+  <hr>
+<div class="container">
+  <div class="row">  
+    <form [formGroup]="clientForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="account">Account:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="account" placeholder="Enter account name" [required]="true" formControlName="account">
+          <div *ngIf="isSubmitted && clientForm.get('account')?.errors?.['required']" class="text-danger">Account is required.</div>
+        </div>
+      </div>
+       
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="department">Department:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="department" placeholder="Enter department" [required]="true" formControlName="department">
+          <div *ngIf="isSubmitted && clientForm.get('department')?.errors?.['required']" class="text-danger">Department is required.</div>
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="siteCode">Site Code:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="siteCode" placeholder="Enter site Code" [required]="true" formControlName="siteCode">
+          <div *ngIf="isSubmitted && clientForm.get('siteCode')?.errors?.['required']" class="text-danger">Site Code is required.</div>
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="projectCode">Project Code:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="projectCode" placeholder="Enter project Code" [required]="true" formControlName="projectCode">
+          <div *ngIf="isSubmitted && clientForm.get('projectCode')?.errors?.['required']" class="text-danger">Project Code is required.</div>
+        </div>
+      </div>
+
+
+      <div class="form-group pt-3">
+        <label class="col-sm-1" for="accountManager">Account Manager:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="accountManager" placeholder="Enter account Manager" [required]="true" formControlName="accountManager">
+          <div *ngIf="isSubmitted && clientForm.get('accountManager')?.errors?.['required']" class="text-danger">Account Manager is required.</div>
+        </div>
+      </div>
+     
+      <div class="form-group pt-3">
+        <div class="col-sm-offset-1 col-sm-6">
+          <button style="margin-right: 1em;" type="submit" class="btn btn-lg btn-primary">Add Client</button>
+          <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+     
+    </form>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="employee">
+  <h2>Employee Details</h2>
+  <p>First Name: {{ getSelectedUserFirstName() }}</p>
+  <p>Last Name :  {{ getSelectedUserLastName() }}</p>
+  <p>Email : {{getSelectedUserEmail()}}</p>
+  <p>Employee Type : {{getSelectedEmployeeType()}}</p>
+  <p>Manager Type : {{getSelectedManagerType()}}</p>
+  <p>Resource : {{getSelectedResource()}}</p>
+  <p>Active : {{getSelectedUserActive()}}</p>
+  <p>Employee Status : {{getSelectedEmployeeStatus()}}</p>
+  <p>Region : {{getSelectedRegion()}}</p>
+  <p>Division : {{getSelectedDivision()}}</p>
+
+
+</div>
+
+
+<button type="button" class="btn btn-sm btn-warning" (click)="back()">OK</button>

@@ -1,0 +1,57 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Projects</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addproject">
+      <i class="fa fa-plus"></i> Add Project
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchName" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="search()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+
+<div id='report-container' class="project">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Project Name</th>
+        <th scope="col" class="table-heading">Client</th>
+        <th scope="col" class="table-heading">Status</th>
+        <th scope="col" class="table-heading">Start Date</th>
+        <th scope="col" class="table-heading">End Date</th>
+        <th scope="col" class="table-heading">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    <tr *ngIf="filtered.length === 0">
+            <td colspan="5">No items found.</td>
+    </tr>
+      <tr *ngFor="let project of filtered" class="table-row">
+        <td class="table-cell">{{ project.projectName }}</td>
+        <td class="table-cell">{{ project.pClient }}</td>
+        <td class="table-cell">{{ project.pStatus }}</td>
+        <td class="table-cell">{{ project.startDate | date:'yyyy/MM/dd'  }}</td>
+        <td class="table-cell">{{ project.endDate | date:'yyyy/MM/dd'  }}</td>
+        <td class="table-cell table-icons">
+          <button style="margin-right: 1em;" [routerLink]="['/project', project.projectId]" type="button" class="btn btn-sm btn-outline-primary">
+            <i class="fa fa-edit"></i>Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(project)">
+            <i class="fa fa-trash"></i>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<app-delete-confirmation-modal
+  [itemName]="itemToDelete"
+  (confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>
+</div>

@@ -1,0 +1,56 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Project</h4>
+  <hr>
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="form-group pt-3">
+        <label for="projectName">Project Name:</label>
+        <input type="text" id="projectName" formControlName="projectName" required/>
+        <div *ngIf="isSubmitted && projectForm.get('projectName')?.errors?.['required']" class="text-danger">Name is required.</div>
+    </div>
+
+
+    <div class="form-group pt-3">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="startDate" required [min]="getCurrentDate()"/>
+        <div *ngIf="isSubmitted && projectForm.get('startDate')?.errors?.['required']" class="text-danger">Start Date is required.</div>
+    </div>
+
+
+    <div class="form-group pt-3">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="endDate" required [min]="getCurrentDate()"/>
+        <div *ngIf="isSubmitted && projectForm.get('endDate')?.errors?.['required']" class="text-danger">End Date is required.</div>
+    </div>
+
+
+    <div class="form-group pt-3">
+        <label for="clientId">Client:</label>
+        <select id="clientId" formControlName="clientId" required>
+          <option value="" disabled>Select Client</option>
+          <option *ngFor="let client of clients" [value]="client.clientId">
+            {{ client.account}}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && projectForm.get('clientId')?.errors?.['required']" class="text-danger">client is required.</div>
+    </div>
+   
+    <div class="form-group pt-3">
+        <label for="projectStatusId">Status:</label>
+        <select id="projectStatusId" formControlName="projectStatusId" required>
+          <option value="" disabled>Select Status</option>
+          <option *ngFor="let projectstatus of projectstatuses" [value]="projectstatus.projectStatusId">
+            {{ projectstatus.projectStatusName }}
+          </option>
+        </select>
+        <div *ngIf="isSubmitted && projectForm.get('projectStatusId')?.errors?.['required']" class="text-danger">Project Status is required.</div>
+    </div>
+
+
+    <div class="form-group pt-3">
+        <button type="submit" class="btn btn-lg btn-primary">Add Project</button>
+        <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+ 
+</form>

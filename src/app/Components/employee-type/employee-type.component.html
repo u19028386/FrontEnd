@@ -1,0 +1,43 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Employee Types</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addtype">
+      <i class="fa fa-plus"></i> Add Employee Type
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchName" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="search()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <div class="table-container">
+    <table class="table table-striped table-hover">
+      <thead>
+          <tr>
+              <th scope="col" class="table-heading">Name</th>
+              <th scope="col" class="table-heading">Description</th>
+              <th scope="col" class="table-heading">Manage</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filtered.length === 0">
+            <td colspan="5">No items found.</td>
+        </tr>
+        <tr *ngFor="let employeetype of filtered">
+          <td>{{ employeetype.employeeTypeName }}</td>
+          <td>{{ employeetype.employeeTypeDescription }}</td>
+          <td>
+            <button style="margin-right: 1em;" [routerLink]="['/type', employeetype.employeeTypeId]" type="button" class="btn btn-sm btn-outline-primary">Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(employeetype)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-delete-confirmation-modal
+  [itemName]="itemToDelete"
+  (confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>

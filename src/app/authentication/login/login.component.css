@@ -1,0 +1,133 @@
+
+.animated-heading {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .logo {
+    max-width: 100px; /* Adjust the size of the logo */
+    margin-bottom: 10px;
+  }
+
+  .welcome-text {
+    font-size: 36px; /* Adjust the font size */
+    font-weight: bold;
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    color: #075c86;
+    font-family: 'Cursive', sans-serif; /* Use a nice font */
+  }
+
+  .animated-text {
+    display: inline-block;
+    position: relative;
+    animation: move 2s ease-in-out infinite;
+  }
+
+  @keyframes move {
+    0%, 100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5; /* Adjust the background color */
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .footer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .welcome-home {
+    font-size: 20px; /* Adjust the font size */
+    font-weight: bold;
+    color: #075c86; /* Purple-ish color */
+  }
+
+  .side-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styling for Login Container (Container 2) */
+  .login-container {
+    /* background-image: url('your-background-image-url.jpg');  */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: inherit; */
+    filter: blur(10px); /* Adjust the blur amount as needed */
+    z-index: -1;
+  }
+  
+  /* Additional styling for text and content inside all containers */
+  .panel {
+    background: rgba(255, 255, 255, 0.9); /* Adjust background color and opacity */
+    padding: 20px;
+    box-shadow: none;
+    border: none;
+    color: #333; /* Text color for content inside containers */
+    text-align: center;
+  }
+  
+  /* Additional styling for headings */
+  .panel-heading h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Text color for headings */
+  }
+  
+  /* Add any other specific styling as needed for your content inside containers */
+  
+  /* Additional styling for the entire page */
+  .outer {
+    background-color: #f5f5f5; /* Page background color */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-panel {
+    border: none;
+    background-image: url('./time.jpg'); /* Replace with the path to your background image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    color: #5a1cc6; /* Text color for content inside the panel */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-panel .animated-heading h1 {
+    font-size: 28px;
+  }
+  
+  .custom-panel .panel-body {
+    font-size: 20px;
+    line-height: 1.5;
+  }

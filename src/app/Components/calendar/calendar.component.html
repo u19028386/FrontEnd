@@ -1,0 +1,138 @@
+<button [routerLink]="'/addcalendaritem'">Add</button>
+
+
+<h2>{{ monthNames[currentMonth] }} {{ currentYear }}</h2>
+
+
+<button (click)="goToPreviousMonth()">Previous Month</button>
+<button (click)="goToNextMonth()">Next Month</button>
+
+
+<table class="calendar-table">
+  <thead>
+    <tr>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <tr *ngFor="let calendarDay of calendar | chunk: 7; let i = index">
+
+
+         <td *ngFor="let day of calendarDay" class="calendar-day" [ngClass]="{'past-date': day.isPastDate, 'today': day.isToday, 'event-date': hasEvent(day.date)}"
+  (click)="showItemsForDate(day.date)">
+       
+        <div class="day-content">
+          <div class="calendar-day-header" [ngClass]="{'blue-date': day.isToday}">
+            <strong>{{ day.date.getDate() }}</strong>
+          </div>
+          <div *ngIf="hasEvent(day.date)" class="event-container">
+            <div *ngFor="let event of day.events" class="event" [style.border-top-color]="event.color" [attr.data-event-name]="event.name"></div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="form-group">
+  <input type="text" [(ngModel)]="searchName" placeholder="Search by name" class="form-control">
+  <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+</div>
+
+
+<table *ngIf="filtered.length > 0" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th scope="col">Location</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let calendaritem of filtered">
+      <td>{{ calendaritem.calendarItemName }}</td>
+      <td>{{ calendaritem.date | date:'yyyy/MM/dd' }}</td>
+   
+      <td>{{calendaritem.startTime | date:'HH:mm' }}</td>
+      <td>{{calendaritem.endTime | date:'HH:mm' }}</td>
+   
+      <td>{{ calendaritem.location }}</td>
+      <td>{{ calendaritem.calendarItemDescription }}</td>
+     
+      <td>
+        <button style="margin-right: 1em;" [routerLink]="['/calendaritem', calendaritem.calendarId]" type="button" class="btn btn-sm btn-info">Edit</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="openModal()">Delete</button>
+
+
+
+
+
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <h2>Are you sure you want to delete this calendar item?</h2>
+    <div class="button-container">
+      <button type="button" (click)="deleteCalendarItem(calendaritem.calendarId)" class="confirm-button">Confirm</button>
+      <button type="button" (click)="closeModal()" class="cancel-button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="filtered.length === 0">No items found.</div>
+
+
+<div>
+  <h2>Today's Calendar Events</h2>
+  <ng-container *ngIf="todayEvents.length; else noTodayEvents">
+    <ul>
+      <li *ngFor="let item of todayEvents">
+        <strong>Event Name:</strong> {{ item.calendarItemName }}<br />
+      </li>
+    </ul>
+  </ng-container>
+
+
+  <ng-template #noTodayEvents>
+    <p>No upcoming events for today.</p>
+  </ng-template>
+</div>
+
+
+<div>
+  <h2>Tomorrow's Calendar Events</h2>
+  <ng-container *ngIf="upcomingEvents.length; else noUpcomingEvents">
+    <ul>
+      <li *ngFor="let item of upcomingEvents">
+        <strong>Event Name:</strong> {{ item.calendarItemName }}<br />
+      </li>
+    </ul>
+  </ng-container>
+
+
+  <ng-template #noUpcomingEvents>
+    <p>No upcoming events for tomorrow.</p>
+  </ng-template>
+</div>

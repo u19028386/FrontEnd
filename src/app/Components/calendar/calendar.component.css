@@ -1,0 +1,95 @@
+.calendar-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+  }
+ 
+  .calendar-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    width: 14.2%;
+  }
+ 
+  .calendar-table td, .calendar-table th {
+    border: 1px solid #dee2e6;
+  }
+ 
+  .calendar-table td, .calendar-table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+ 
+  .calendar-day {
+    height: 12vh;
+    max-height: 12vh;
+    cursor: pointer;
+  }
+ 
+  .calendar-items-wrapper {
+    margin-left: -10px;
+    margin-right: -10px;
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+  }
+ 
+  .calendar-day.past-date {
+    background-color: rgb(248, 248, 248);
+  }
+ 
+  .calendar-day:hover {
+    background-color: rgb(248, 248, 248);
+  }
+ 
+  .blue-date {
+    color: rgb(16, 110, 190);
+  }
+
+
+  /* my-calendar.component.scss */
+.calendar-day {
+    position: relative;
+  }
+
+
+  .calendar-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 2px;
+  /* Change this color as needed */
+  }
+ 
+  /* Style for the events */
+/* .event-container {
+ position: absolute; */
+/* bottom: 0; /* Adjust this value to control the vertical position of the events */
+/* left: 0;
+ width: 100%;
+ z-index: 1;
+   } */ */
+  .event-container {
+    position: absolute;
+    top: 8; /* Adjust this value to control the vertical position of the events */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+
+  .event {
+    background-color: blue; /* Set background color to transparent */
+    height: 2px; /* Adjust the height to control the thickness of the line */
+    margin-top: 10px;
+  }
+ 
+  /* Generate random background colors for events */
+  @for $i from 1 through 10 {
+    .event:nth-child(#{$i}) {
+      background-color: random-color(); /* Replace this with a function to generate random colors */
+    }
+  }

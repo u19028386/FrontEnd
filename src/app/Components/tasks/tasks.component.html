@@ -1,0 +1,17 @@
+<!-- Display tasks and provide action buttons -->
+<ul>
+    <li *ngFor="let task of tasks">
+      {{ task.taskName }} - {{ task.taskDescription }}
+      <button (click)="selectTask(task)">Edit</button>
+      <button (click)="deleteTask(task.taskId)">Delete</button>
+    </li>
+  </ul>
+  
+  <!-- Form for adding or editing tasks -->
+  <form (ngSubmit)="isEditing ? editTask(selectedTask.taskId, selectedTask) : addTask(selectedTask)">
+    <input type="text" [(ngModel)]="selectedTask.taskName" placeholder="Task Name">
+    <input type="text" [(ngModel)]="selectedTask.taskDescription" placeholder="Task Description">
+    <button type="submit">{{ isEditing ? 'Save' : 'Add' }}</button>
+    <button type="button" (click)="clearSelectedTask()">Cancel</button>
+  </form>
+  

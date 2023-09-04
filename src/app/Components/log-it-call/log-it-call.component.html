@@ -1,0 +1,15 @@
+<div class="it-call-container">
+    <button class="contact-button" (click)="expandContact()">
+      <i class="fa fa-wrench"></i>
+    </button>
+    <div class="expanded-content" *ngIf="isExpanded">
+      <div>
+        <h1 class="blue-heading">Having System Difficulties?</h1>
+      </div>
+      <p>If you encounter any technical difficulties while using our system, we encourage you to seek assistance by sending an email to our dedicated support team:</p>
+      <p>Please give a detailed explanation of the issue you are facing, and our experts will promptly address your concerns and provide the necessary assistance. We value your feedback and are committed to ensuring a seamless and smooth experience for all our users. Thank you for your cooperation.</p>
+  
+  
+      <a class="email-link" (click)="contactSupport()">Contact IT Support</a>
+    </div>
+  </div>

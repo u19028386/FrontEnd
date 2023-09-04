@@ -1,0 +1,70 @@
+
+<div class="modal" [class.open]="isModalOpen">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Report</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+         <h2> Would you like to generate the employee report?</h2>
+       
+          <button class="btn btn-primary" (click)=" closeModal()">Confirm</button>
+          <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button type="button" (click)="downloadFilteredPdf()">Download</button>
+  <h2>Employee Summary</h2>
+
+
+  <div class="table-container">
+      <div class="form-group">
+          <select [(ngModel)]="selectedRegion" class="form-control">
+          <option value="">All Regions</option>
+          <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+          </select>
+     
+          <select [(ngModel)]="selectedResource" class="form-control">
+          <option value="">All Resources</option>
+          <option *ngFor="let resource of resources" [value]="resource">{{ resource }}</option>
+          </select>
+     
+          <button (click)="clearFilter()">Clear Filter</button>
+          <button type="button" (click)="applyFilters()">Filter</button>
+
+
+  <table class="table table-striped table-hover">
+  <thead>
+  <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Resource</th>
+      <th scope="col">Type</th>
+      <th scope="col">Status</th>
+      <th scope="col">Division</th>
+      <th scope="col">Region</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of filtered">
+      <td>{{ employee.pFirstName }}</td>
+      <td>{{ employee.pLastName}}</td>
+      <td>{{ employee.pResource }}</td>
+      <td>{{ employee.pType}}</td>
+      <td>{{ employee.pStatus}}</td>
+      <td>{{ employee.pDivision}}</td>
+      <td>{{ employee.pRegion}}</td>
+  </tr>
+  </tbody>
+</table>
+      </div>
+  </div>
+

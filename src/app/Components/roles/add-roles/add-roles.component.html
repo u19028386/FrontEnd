@@ -1,0 +1,30 @@
+<div class="add-role-section">
+  <h4 class="bg-blue text-white py-2 heading">Add Role</h4>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form [formGroup]="RoleForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+          <div class="form-group pt-3">
+            <div class="input-field" [class.error] = "RoleForm.controls['userRoleName'].dirty && RoleForm.hasError('required', 'userRoleName')">
+              <input formControlName="userRoleName" type="text" placeholder="Enter Role Name">
+            </div>
+          </div>
+          <small *ngIf="RoleForm.controls['userRoleName'].dirty && RoleForm.hasError('required', 'userRoleName')" class="text-danger">*The role name is required</small>
+          <div class="form-group pt-3">
+            <div class="input-field" [class.error] = "RoleForm.controls['userRoleDescription'].dirty && RoleForm.hasError('required', 'userRoleDescription')">
+              <textarea formControlName="userRoleDescription" type="text" placeholder="Enter Role Description"></textarea>
+            </div>
+          </div>
+          <small *ngIf="RoleForm.controls['userRoleDescription'].dirty && RoleForm.hasError('required', 'userRoleDescription')" class="text-danger">*The role description is required</small>
+          <div class="form-group pt-3">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button style="margin-right: 1em;" type="submit" class="btn btn-lg btn-primary">Submit</button>
+              <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

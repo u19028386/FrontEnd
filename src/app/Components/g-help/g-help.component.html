@@ -1,0 +1,50 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Manage Help</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/help/add">
+      <i class="fa fa-plus"></i> Add Help
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchQuery" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="searchHelps()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+<div class="table-container">
+  <table class="table table-bordered table-hover">
+    <tr class="table-heading">
+      <th scope="col" class="table-heading">Help Name</th>
+      <th scope="col" class="table-heading">Help Description</th>
+      <th scope="col" class="table-heading">Help Type</th>
+      <th scope="col" class="table-heading">File Name</th>
+      <th scope="col" class="table-heading">Manage</th>
+    </tr>
+    <tr *ngFor="let help of filteredHelps" class="table-row">
+      <td class="table-cell">{{ help.helpName }}</td>
+      <td class="table-cell">{{ help.helpDescription }}</td>
+      <td class="table-cell">{{ help.helpTypeName }}</td>
+      <td class="table-cell">{{ help.fileName }}</td>
+      <td class="table-cell table-actions">
+        <button class="btn btn-sm btn-outline-primary" (click)="editHelp(help)">
+          <i class="fa fa-edit"></i> Edit
+        </button>
+        <button class="btn btn-sm btn-outline-success" (click)="downloadHelp(help)">
+          <i class="fa fa-edit"></i> Download
+        </button>
+        <button class="btn btn-sm btn-outline-danger" (click)="deleteHelp(help.helpId)">
+          <i class="fa fa-trash"></i> Delete
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="filteredHelps.length === 0" class="table-row">
+      <td colspan="5" class="table-cell search-message">No helps found.</td>
+    </tr>
+  </table>
+  <div>
+    <button class="btn btn-sm btn-primary" routerLink="/help-type">
+      Manage Help Types
+    </button>
+  </div>
+</div>

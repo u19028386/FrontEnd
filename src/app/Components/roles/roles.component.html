@@ -1,0 +1,41 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Roles</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/add-role">
+      <i class="fa fa-plus"></i> Add Role
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="onSearch()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="table-heading">Role Name</th>
+          <th scope="col" class="table-heading">Role Description</th>
+          <th scope="col" class="table-heading">Manage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let role of roles" class="table-row">
+          <td class="table-cell">{{ role.userRoleName }}</td>
+          <td class="table-cell">{{ role.userRoleDescription }}</td>
+          <td class="table-cell table-actions">
+            <button class="btn btn-sm btn-outline-primary" (click)="editUserRole(role.userRoleId)">
+              <i class="fa fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteUserRole(role.userRoleId)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

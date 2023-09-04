@@ -1,0 +1,34 @@
+<div class="add-role-section">
+<h4 class="bg-blue text-white py-2 heading">Add Help Type</h4>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form [formGroup]="HelptypeForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="form-group pt-3">
+          <label class="col-sm-2" for="name">Name:</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="name" placeholder="Enter name" formControlName="helpTypeName">
+          </div>
+        </div>
+
+
+        <div class="form-group pt-3">
+          <label class="col-sm-2" for="description">Description:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" type="text" id="description" placeholder="Enter description" formControlName="helpTypeDescription"></textarea>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button style="margin-right: 1em;" type="submit" [disabled]="!HelptypeForm.valid" class="btn btn-lg btn-primary">Submit</button>
+            <button type="button" class="btn btn-lg btn-secondary" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

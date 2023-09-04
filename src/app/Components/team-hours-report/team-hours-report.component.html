@@ -1,0 +1,80 @@
+<!-- <label for="projectSelect">Select a Project:</label>
+<select id="projectSelect" [(ngModel)]="selectedProjectName" (change)="loadProjectTeams()">
+  <option value="">Select Project</option>
+  <option *ngFor="let project of projects" [value]="project.projectName">{{ project.projectName }}</option>
+</select>
+<div *ngIf="projectTeams.length > 0">
+  <h2>Control Break Report for {{ selectedProjectName }}</h2>
+  <ul>
+    <li *ngFor="let report of projectTeams">
+      <h3>{{ report.projectName }}</h3>
+      <p>Total Team Hours: {{ report.totalTeamHours }}</p>
+      <ul>
+        <li *ngFor="let employee of report.employeeReports">
+          <p>Employee ID: {{ employee.employeeId }}</p>
+          <p>Employee Name: {{ employee.employeeName }}</p>
+          <p>Total Hours: {{ employee.totalHours }}</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div *ngIf="projectTeams.length === 0">
+  <p>No data available for the selected project.</p>
+</div> -->
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Total Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let entry of groupedAllocations | keyvalue">
+      <tr *ngFor="let allocation of entry.value">
+        <td *ngIf="allocation === entry.value[0]">{{ entry.key }}</td>
+        <td>{{ allocation.firstName }}</td>
+        <td>{{ allocation.lastName }}</td>
+        <td>{{ allocation.totalNumHours }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{{ projectTotalHours.get(entry.key) }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table> -->
+
+<div class="report-container">
+  <button (click)="downloadPdfp()" class="download-button">Download PDF</button>
+  <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; background-color: #f2f2f2; font-weight: bold; padding: 8px; text-align: left;">Project Name</th>
+        <th style="border: 1px solid #ccc; background-color: #f2f2f2; font-weight: bold; padding: 8px; text-align: left;">First Name</th>
+        <th style="border: 1px solid #ccc; background-color: #f2f2f2; font-weight: bold; padding: 8px; text-align: left;">Last Name</th>
+        <th style="border: 1px solid #ccc; background-color: #f2f2f2; font-weight: bold; padding: 8px; text-align: left;">Total Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let entry of groupedAllocations | keyvalue">
+        <tr *ngFor="let allocation of entry.value">
+          <td *ngIf="allocation === entry.value[0]" style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ entry.key }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ allocation.firstName }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ allocation.lastName }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ allocation.totalNumHours }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="border: 1px solid #ccc; background-color: #f2f2f2; font-weight: bold; padding: 8px; text-align: left;">Total</td>
+          <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ projectTotalHours.get(entry.key) }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

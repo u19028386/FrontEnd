@@ -1,0 +1,58 @@
+<div class="roles-section">
+  <h2 class="heading text-center">Competencies</h2>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm btn-primary add-button" routerLink="/addresource">
+      <i class="fa fa-plus"></i> Add Competency
+    </button>
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchName" class="search-input" placeholder="Search...">
+      <button class="btn btn-sm btn-primary search-button" (click)="search()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="table-container">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="table-heading">Name</th>
+          <th scope="col" class="table-heading">Type</th>
+          <th scope="col" class="table-heading">Description</th>
+      
+        </tr>
+      </thead>
+      <tbody>
+
+
+      <tr *ngIf="filtered.length === 0">
+              <td colspan="5">No items found.</td>
+      </tr>
+
+
+        <tr *ngFor="let resource of filtered" class="table-row">
+          <td class="table-cell">{{ resource.resourceName }}</td>
+          <td class="table-cell">{{ resource.pType }}</td>
+          <td class="table-cell">{{ resource.resourceDescription }}</td>
+          <td class="table-cell table-icons">
+            <button style="margin-right: 1em;" [routerLink]="['/resource', resource.resourceId]" type="button" class="btn btn-sm btn-outline-primary">
+              <i class="fa fa-edit"></i>Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(resource)">
+            <i class="fa fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button class="btn btn-sm btn-primary" routerLink="/resourcetype">
+      Manage Competency Types
+    </button>
+  </div>
+
+<app-delete-confirmation-modal
+[itemName]="itemToDelete"
+(confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>

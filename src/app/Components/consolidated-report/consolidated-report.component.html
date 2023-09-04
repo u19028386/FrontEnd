@@ -1,0 +1,57 @@
+
+Html
+<div class="modal" [class.open]="isModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Consolidated Project Hours Report</h5>
+        <button type="button" class="close" (click)="closeModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+       <h2> Would you like to generate the consolidated project hours report?</h2>
+     
+        <button class="btn btn-primary" (click)=" closeModal()">Confirm</button>
+        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button (click)="downloadReportp('pdf')">Download</button>
+
+
+
+
+<div>
+  <h2>Consolidated Project Report</h2>
+  <table border="1" id="projectTable">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Estimated Hours (h)</th>
+        <th>Actual Hours (h)</th>
+        <th>Remaining Hours (h)</th>
+        <th>Remaining Hours (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let allocation of consolidatedReport">
+        <td>{{ allocation.projectName }}</td>
+        <td>{{ allocation.totalNumHours }}</td>
+        <td>{{ allocation.totalCapturedHours }}</td>
+        <td >{{ allocation.remainingHours }}</td>
+        <td >
+          {{ ((allocation.remainingHours / allocation.totalNumHours) * 100).toFixed(2) }}%
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
+
+

@@ -1,0 +1,35 @@
+<button [routerLink]="'/addresourcetype'">Add</button>
+
+
+<div class="form-group">
+    <input type="text" [(ngModel)]="searchName" placeholder="Search by name" class="form-control">
+    <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+  </div>
+ 
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filtered.length === 0">
+        <td colspan="5">No items found.</td>
+      </tr>
+      <tr *ngFor="let resourcetype of filtered">
+        <td>{{ resourcetype.resourceTypeName }}</td>
+        <td>{{ resourcetype.resourceTypeDescription }}</td>
+        <td>
+          <button style="margin-right: 1em;" [routerLink]="['/resourcetype', resourcetype.resourceTypeId]" type="button" class="btn btn-sm btn-info">Edit</button>
+          <button type="button" class="btn btn-sm btn-danger" (click)="openDeleteModal(resourcetype)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ 
+  <app-delete-confirmation-modal
+  [itemName]="itemToDelete"
+  (confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>
